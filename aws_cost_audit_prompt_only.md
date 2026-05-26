@@ -1,6 +1,22 @@
-# AWS Cost Audit — Prompt-Only (No MCP)
+# AWS Cost Audit (Prompt-Only — No MCP)
 
-For use in Kiro, Q Developer CLI, or CloudShell. No MCP server needed — the AI uses AWS CLI directly.
+## Overview
+
+A single prompt that turns Kiro, Q Developer CLI, or CloudShell into an AWS cost auditor. No MCP server, no Python, no dependencies — just paste and go. The AI uses AWS CLI directly to scan your account, find idle resources, and clean them up on your approval.
+
+**Invent and Simplify.** AWS accounts accumulate idle resources that silently burn budget. GPU endpoints from forgotten demos, ML tools that never got stopped, search indices from POCs nobody decommissioned. This prompt replaces hours of console-clicking with a single paste.
+
+**First real-world result:** Identified **$176K/year** in waste from a single AWS account — 40+ idle resources across 6 regions.
+
+### When to Use This vs. the MCP Version
+
+| | This (Prompt-Only) | MCP Server |
+|--|---|---|
+| **Best for** | Quick one-off audits | Recurring audits, team distribution |
+| **Setup** | Zero (if AWS CLI configured) | Install MCP server once |
+| **Works in** | Kiro, Q CLI, CloudShell, Claude Code | Kiro, Quick, Claude Desktop |
+| **Needs Python?** | No | Yes |
+| **Needs MCP config?** | No | Yes |
 
 ---
 
