@@ -1,4 +1,40 @@
-# AWS Cost Audit
+# AWS Cost Audit (MCP Server)
+
+## Overview
+
+An MCP server that turns any AI assistant into an AWS cost auditor. One prompt finds idle resources bleeding money across your account. One approval cleans them all up.
+
+**Invent and Simplify.** The traditional approach — logging into Cost Explorer, clicking through each service console, cross-referencing CloudWatch metrics across regions — takes hours of manual work that nobody prioritizes until the bill becomes painful. This replaces that entire workflow with a single sentence.
+
+Built as a lightweight MCP (Model Context Protocol) server, it works with Amazon Quick, Kiro, Claude Desktop, or any MCP-compatible tool. Runs locally using your AWS credentials — no data leaves your machine.
+
+**First real-world result:** Identified **$176K/year** in waste from a single AWS account — 40+ idle resources across 6 regions, cleaned up in under 5 minutes.
+
+### Architecture
+
+```
+User: "Run a full AWS cost audit" → AI → MCP → aws-cost-audit server (local) → boto3 → AWS APIs
+```
+
+### Tools
+
+| Tool | Description |
+|------|-------------|
+| `get_cost_breakdown` | Cost Explorer data, auto-discovers active regions |
+| `scan_idle_resources` | Finds idle resources per region (SageMaker, ECS, Kendra, OpenSearch, FSx, L4E, Q, Grafana) |
+| `delete_resource` | Removes a flagged resource with dependency handling |
+| `full_audit` | Complete audit across all active regions in one call |
+
+### Compatibility
+
+| Tool | Works? |
+|------|--------|
+| Kiro | ✅ |
+| Claude Code / Claude Desktop | ✅ |
+| Amazon Quick (Desktop, via MCP) | ✅ (tools loaded; chat in Preview) |
+| Q Developer CLI / CloudShell | Use [prompt-only version](aws_cost_audit_prompt_only.md) |
+
+---
 
 ## For Users
 
